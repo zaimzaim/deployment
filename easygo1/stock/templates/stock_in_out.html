@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background: rgb(50,170,173);
+      background: radial-gradient(circle, rgba(50,170,173,1) 35%, rgba(90,225,194,1) 97%);
+    }
+    .s_id,.p_id,.date,.quantity,.status{
+      width: 300px;
+      height: 40px;
+      padding: 10px 20px;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      background-color: #f8f8f8;
+      font-size: 16px;
+      resize: none;
+    }
+    .submitbutton{
+      width: 300px;
+      height: 40px;
+      border-radius: 10px;
+      background-color: rgb(50, 173, 173);
+      cursor: pointer;
+      border-color: transparent;
+      color: white;
+      font-weight: 300; 
+      font-size: 16px;
+    }
+    button{
+      width: 300px;
+      height: 40px;
+      border-style: solid;
+      border-radius: 10px;
+      background-color: white;
+      cursor: pointer;
+      border-color: rgb(50, 173, 173);
+      color: rgb(50, 173, 173);
+      font-weight: 300;
+      font-size: 16px;
+    }
+    .stock-in-out{
+      width: 500px;
+      height: 550px;
+      padding-top: 50px;
+      background-color: rgb(255, 255, 255);
+      border-radius: 20px;
+    }
+  </style>
+  <center>
+    <br><br><br><br><br>
+    <div class="stock-in-out">
+      <h1>Stock In/Out⬆️⬇️</h1>
+      <form action="stock_in_out" method="post">
+        {% csrf_token %} 
+        <select name="s_id" class="s_id">
+          {% for value in staff_id %}
+              <option value="{{value.staffID}}">{{value.staffID}}</option>
+          {% endfor %}
+        </select>
+        <br><br>
+        <select name="p_id" class="p_id">
+          <option value="">Select Product ID</option>
+          {% for value in product_id %}
+              <option value="{{value.productID}}">{{value.productID}}</option>
+          {% endfor %}
+        </select>
+        <br><br>
+        <input type="date" placeholder="Date" name="date" class="date">
+        <br><br>
+        <input type="number" placeholder="Quantity" name="quantity" class="quantity">
+        <br><br>
+        <select name="status" class="status">
+          <option value="">Select Status</option>
+          <option value="In">In</option>
+          <option value="Out">Out</option>
+        </select>
+        <br><br>
+        <input class="submitbutton" type="submit" value="SUBMIT">
+      </form>
+      <br>
+      {{message}}
+      <br><br>
+      <a href="{% url 'stock_in_out_history' %}"><button>Stock In/Out History</button></a>
+    </div>
+  </center>
+</body>
+</html>

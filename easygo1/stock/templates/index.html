@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background: rgb(50,170,173);
+      background: radial-gradient(circle, rgba(50,170,173,1) 35%, rgba(90,225,194,1) 97%);
+    }
+    .staffid,.password{
+      width: 300px;
+      height: 40px;
+      padding: 10px 20px;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      background-color: #f8f8f8;
+      font-size: 16px;
+      resize: none;
+    }
+    .signinbutton{
+      width: 300px;
+      height: 40px;
+      border-radius: 10px;
+      background-color: rgb(50, 173, 173);
+      cursor: pointer;
+      border-color: transparent;
+      color: white;
+      font-weight: 300;
+      font-size: 16px;
+    }
+    .signin-form{
+      width: 500px;
+      height: 550px;
+      padding-top: 50px;
+      background-color: rgb(255, 255, 255);
+      border-radius: 20px;
+    }
+    a{
+      text-decoration: none;
+    }
+    .welcome{
+      width: 400px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+  </style>
+  <center>
+    <br><br><br><br><br>
+    <div class="signin-form">
+      <form action="" method="get">
+        <img src="https://upload.wikimedia.org/wikipedia/ms/thumb/a/af/Logo_kpm.gif/200px-Logo_kpm.gif" width="150px">
+        <p class="welcome">Welcome to EasyGo Stocks Management System</p>
+        <h1>Login🧑</h1>
+        {% csrf_token %}
+        <br>
+        <input type="text" placeholder="User ID" name="staff_id" class="staffid">
+        <br><br>
+        <input type="password" placeholder="Password" name="password" class="password">
+        <br><br>
+        <input class="signinbutton" type="submit" value="LOGIN">
+        <br>
+        <p>New staff? <a href="{% url 'sign_up' %}">Sign Up</a></p>
+      </form>
+      <p>{{message}}</p>
+    </div>
+  </center>
+</body>
+</html>

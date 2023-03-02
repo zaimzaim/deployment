@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    body, a{
+      font-family: Arial, Helvetica, sans-serif;
+      text-decoration: none;
+    }
+    table{
+      border-collapse: collapse;
+      width: 80%;
+    }
+    th{
+      border: 1px solid;
+      background-color: rgb(50, 173, 173);
+      text-align: center;
+      height: 40px;
+      font-size: 18px;
+    }
+    td{
+      border: 1px solid;
+      background-color: rgb(197, 220, 220);
+      text-align: center;
+      height: 30px;
+      font-size: 15px;
+    }
+    button{
+      width: 180px;
+      height: 40px;
+      background-color: rgb(50, 173, 173);
+      border-radius: 10px;
+      cursor:pointer;
+      font-size: 16px;
+      color: white;
+      border-color: transparent;
+    }
+    .home-button{
+      width: 150px;
+      height: 40px;
+      border-style: solid;
+      border-radius: 10px;
+      background-color: white;
+      cursor: pointer;
+      border-color: rgb(50, 173, 173);
+      color: rgb(50, 173, 173);
+      font-weight: 300;
+      font-size: 16px;
+    }
+  </style>
+  <center>
+    <br>
+    <h1><a href="{% url 'home' %}">🏠</a></h1>
+    <a href="{% url 'add_question' %}"><button>Add Question</button></a>
+    <a href="{% url 'my_pending_question' %}"><button>My Pending Question</button></a>
+    <h1>Asked Question List❓</h1>
+    <table>
+      <tr>
+          <th><strong>Staff ID</strong></th>
+          <th><strong>Question</strong></th>
+          <th><strong>Answer</strong></th>
+      </tr>
+      {% for data in allaskquestion %}
+          <tr>
+              <td>{{data.staffID_id}}</td>
+              <td>{{data.question}}</td>
+              <td>{{data.answer}}</td>
+          </tr>
+      {% endfor %}
+    </table>
+  </center>
+</body>
+</html>

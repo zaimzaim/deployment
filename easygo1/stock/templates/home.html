@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      color: black;
+      text-decoration: none;
+      background: rgb(50,170,173);
+      background: radial-gradient(circle, rgba(50,170,173,1) 30%, rgba(90,225,194,1) 97%);
+    }
+    h1{
+      text-align: center;
+      margin: 0;
+    }
+    button{
+      width: 200px;
+      height: 40px;
+      background-color: rgb(50, 173, 173);
+      border-radius: 10px;
+      cursor:pointer;
+      font-size: 16px;
+      color: white;
+      border-color: transparent;
+    }
+    .log-out{
+      width: 200px;
+      height: 40px;
+      background-color: #ff563a;
+      border-radius: 10px;
+      cursor:pointer;
+      font-size: 16px;
+      color: white;
+      border-color: transparent;
+    }
+    .homepage-div{
+      width: 700px;
+      height: 600px;
+      padding-top: 50px;
+      background-color: rgb(255, 255, 255);
+      border-radius: 20px;
+    }
+    .gradient {
+      background: linear-gradient(-45deg, rgb(17, 240, 188), #8473ff, rgb(230, 88, 161), #f8fd71);
+      background-size: 300%;
+      font-size: 36px;
+      font-family: Arial, Helvetica, sans-serif;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: animated_text 3s ease-in-out infinite;
+      -moz-animation: animated_text 3s ease-in-out infinite;
+      -webkit-animation: animated_text 3s ease-in-out infinite;
+    }
+    @keyframes animated_text {
+      0% { background-position: 0px 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0px 50%; }
+    }
+    .type-writer{
+        white-space: nowrap;
+        overflow: hidden;
+        animation: typewriter 4s steps(28) infinite alternate,
+          blink 800ms steps(28) infinite normal;
+        border-right: 5px solid black;
+      }
+      @keyframes typewriter {
+        from {
+          width: 0%;
+        }
+        to {
+          width: 90%;
+        }
+      }
+      @keyframes blink {
+        from {
+          border-color: black;
+        }
+        to {
+          border-color: transparent;
+        }
+      }
+  </style>
+  <center>
+    <br><br><br>
+    <div class="homepage-div">
+      <br><br>
+      <h1>Welcome <span class="gradient">{{staffname}}</span> to</h1>
+      <h1 class="type-writer">EasyGo Stocks Management System📦</h1>
+      <p style="width: 500px;">This system purpose are to facilitate the stocks management process for EasyGo Staff.</p>
+      <br><br>
+      <a href="{% url 'product_list' %}"><button>Product List</button></a>
+      <br><br>
+      <a href="{% url 'stock_in_out_history' %}"><button>Stock In/Out History</button></a>
+      <br><br>
+      <a href="{% url 'asked_question' %}"><button>Asked Question List</button></a>
+      <br><br>
+      <a href="{% url 'change_password' %}"><button>Change Password</button></a>
+      <br><br>
+      <a href="{% url 'login' %}"><button class="log-out">Log Out</button></a>
+      <br>
+    </div>
+  </center>
+</body>
+</html>
